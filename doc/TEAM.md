@@ -8,7 +8,7 @@ Trưởng nhóm/người nộp: Đặng Quang Huy - 2A202602962
 
 Ngày lab/deadline áp dụng: 13/10/2026 11:59 AM — Asia/Ho_Chi_Minh (UTC+07:00)
 
-Commit dùng để chấm: d98f9b47c27678be1687a2853dd55aed6aecba24
+Commit dùng để chấm: 6a74d01079bf819512174aea5db45c99a646a21a
 
 Mỗi nhóm nộp một repo. Điền đủ thành viên và một mục INDIVIDUAL cho từng người.
 Thêm/xóa rows để khớp nhóm thật; mẫu ba rows không ép nhóm phải có ba người.
