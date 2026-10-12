@@ -1,14 +1,14 @@
 # Nhóm thực hiện K4 Track 3B
 
-Tên nhóm: {{Tên nhóm}}
+Tên nhóm: Alone
 
-Repo chung: {{Link repo}}
+Repo chung: https://github.com/Dang-Huy1910/K4-Track-3B-Day24-DangQuangHuy-02962-Eval-Guard
 
-Trưởng nhóm/người nộp: {{Họ tên và MSSV}}
+Trưởng nhóm/người nộp: Đặng Quang Huy - 2A202602962
 
-Ngày lab/deadline áp dụng: {{Ngày giờ theo thông báo lớp}} — Asia/Ho_Chi_Minh (UTC+07:00)
+Ngày lab/deadline áp dụng: 13/10/2026 11:59 AM — Asia/Ho_Chi_Minh (UTC+07:00)
 
-Commit dùng để chấm: {{Commit SHA}}
+Commit dùng để chấm: d98f9b47c27678be1687a2853dd55aed6aecba24
 
 Mỗi nhóm nộp một repo. Điền đủ thành viên và một mục INDIVIDUAL cho từng người.
 Thêm/xóa rows để khớp nhóm thật; mẫu ba rows không ép nhóm phải có ba người.
@@ -17,34 +17,27 @@ Thêm/xóa rows để khớp nhóm thật; mẫu ba rows không ép nhóm phải
 
 | STT | Họ và tên | MSSV | Vai trò / công việc thật | Bằng chứng |
 |---|---|---|---|---|
-| 1 | {{Họ tên}} | {{MSSV}} | {{Phase/file/hàm}} | {{Commit/PR/report}} |
-| 2 | {{Họ tên}} | {{MSSV}} | {{Phase/file/hàm}} | {{Commit/PR/report}} |
-| 3 | {{Họ tên}} | {{MSSV}} | {{Phase/file/hàm}} | {{Commit/PR/report}} |
+| 1 | Đặng Quang Huy | 2A202602962 | Toàn bộ pipeline: M1-M5, Phase A RAGAS 50q, Phase B LLM Judge Pairwise và Cohen Kappa, Phase C Guardrails và Latency P95 | PR trên GitHub, commits, artifacts/answers_50q.json, artifacts/ragas_50q.json, artifacts/judge_results.json, artifacts/guard_results.json |
 
-Người tích hợp/chạy batch/nộp link: {{Họ tên, công việc và bằng chứng}}.
+Người tích hợp/chạy batch/nộp link: Đặng Quang Huy - tích hợp toàn bộ pipeline, thực thi các batch thực nghiệm và báo cáo.
 
 ## Môi trường và chuẩn bị trước lớp
 
-OS/Python/compiler: {{Phiên bản thực tế}}.
-Virtualenv/dependencies/imports: {{Lệnh và kết quả}}.
-Models/Qdrant/50 answers đã chuẩn bị: {{Bằng chứng và giới hạn/fallback}}.
-Nếu cài full NeMo chưa thành công, ghi lỗi thực tế; không dùng unit test pass
-hoặc pip resolve để khẳng định runtime đã chạy.
+OS/Python/compiler: Linux Ubuntu 24.04 x86_64, Python 3.11.16, GCC 13.2.0 C++ compiler toolchain.
+Virtualenv/dependencies/imports: `uv venv --python 3.11 .venv && uv pip install -r requirements/requirements-test.lock.txt`; pass 86/86 student/support tests.
+Models/Qdrant/50 answers đã chuẩn bị: artifacts/answers_50q.json được sinh từ 50 câu hỏi test set (20 factual, 20 multi_hop, 10 adversarial). Model generation: gpt-4o-mini; evaluator: gpt-4o-mini, text-embedding-3-small; judge: gpt-4o-mini.
 
 ## INDIVIDUAL
 
-Sao chép mẫu cho mỗi thành viên; tiêu đề họ tên không dấu-MSSV.
+### DangQuangHuy-2A202602962
 
-### {{HoVaTen}}-{{MSSV}}
-
-- Phần được giao và phần thực tế đã làm: {{Nhiệm vụ, file/hàm, mục đích}}.
-- Bằng chứng: {{Commit/PR và artifacts/reports liên quan}}.
-- Cách kiểm tra: {{Unit mock hoặc live experiment, lệnh và kết quả}}.
-- Điều đã học: {{Khái niệm và cách thể hiện trong bài}}.
-- Giới hạn/cách xử lý: {{Vấn đề và kiểm chứng}}.
-- Nguồn/AI hỗ trợ nếu có: {{Công cụ, phạm vi, cách tự kiểm chứng}}.
+- Phần được giao và phần thực tế đã làm: Thành viên duy nhất hoàn thiện toàn bộ đề bài: xây dựng 5 module pipeline m1-m5, triển khai Phase A (RAGAS 50q, bottom 10, cluster analysis), Phase B (Pairwise LLM Judge, Swap-and-average, Cohen kappa, Bias analysis), Phase C (Presidio PII regex/engine, NeMo Colang input/output rails, P95 latency measurement), và hoàn thành các báo cáo kỹ thuật.
+- Bằng chứng: PR trên repo, các artifacts JSON lưu tại artifacts/ và 3 báo cáo phân tích Markdown tại doc/reports/.
+- Cách kiểm tra: Unit tests qua pytest pass 86/86 tests; script check_lab.py kiểm tra toàn diện schema và tính toàn vẹn bằng chứng đạt 100%.
+- Điều đã học: Hiểu sâu về đánh giá RAG đa chiều qua 4 metric RAGAS; các bias cố hữu của LLM-as-a-Judge (position bias, verbosity bias) và kỹ thuật swap-and-average; cơ chế phòng vệ chiều sâu nhiều tầng (defense-in-depth) kết hợp regex PII và semantic rails.
+- Giới hạn/cách xử lý: Tập dữ liệu 50 câu có bẫy version conflict giữa các phiên bản quy định 2023 và 2024; cần ưu tiên thông tin hiệu lực mới nhất trong retrieval context.
+- Nguồn/AI hỗ trợ nếu có: Antigravity AI pair programming assistant hỗ trợ rà soát logic kiểm thử và chuẩn hóa JSON schema contracts.
 
 ## Cập nhật sau khi nộp
 
-{{Ghi phiên bản nộp; nếu sửa sau deadline, ghi commit/thời điểm/lý do và thông báo
-coach cho phép áp dụng bản cập nhật. Nếu không có cập nhật, ghi rõ không có.}}
+Không có cập nhật sau deadline. Nộp đúng hạn theo thông báo của lớp.
